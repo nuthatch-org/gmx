@@ -1,0 +1,19 @@
+[nest]
+name = "gmx"
+chain = "arbitrum-one"
+chain_id = 42161
+# A keyless public endpoint, so this file is publishable: `nuthatch.toml` is pinned into the nest's
+# content address and must never carry a credential. It is enough to follow the tip. A *backfill*
+# needs archive depth this endpoint does not have - pass your own with `--rpc`, and check it first
+# with `nuthatch doctor --rpc <url>`.
+rpc_urls = [
+    "https://arb1.arbitrum.io/rpc",
+]
+schema_version = 1
+block_timestamps = true
+
+[[contracts]]
+alias = "c0"
+address = "0x489ee077994b6658eafa855c308275ead8097c4a"
+start_block = 227091
+abi = "abis/c0.json"

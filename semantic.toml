@@ -1,0 +1,420 @@
+# semantic.toml - what this nest's data *means* (RFC-0016). Read by the MCP `schema`
+# tool, the admin UI, and the scaffolded skill. Edit descriptions freely; the
+# `[table.*.footguns]` are DERIVED from the ABI and regenerated - leave them be.
+
+schema_version = 1
+
+[nest]
+description = "The `gmx` nest on arbitrum-one. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__buy_u_s_d_g]
+description = "`BuyUSDG(address,address,uint256,uint256,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per BuyUSDG(address,address,uint256,uint256,uint256) event"
+
+[table.c0__buy_u_s_d_g.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+feeBasisPoints = "The `feeBasisPoints` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenAmount = "The `tokenAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+usdgAmount = "The `usdgAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__buy_u_s_d_g.footguns]
+big_ints = [
+    "tokenAmount",
+    "usdgAmount",
+    "feeBasisPoints",
+]
+overflows_dec = [
+    "tokenAmount",
+    "usdgAmount",
+    "feeBasisPoints",
+]
+
+[table.c0__close_position]
+description = "`ClosePosition(bytes32,uint256,uint256,uint256,uint256,uint256,int256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per ClosePosition(bytes32,uint256,uint256,uint256,uint256,uint256,int256) event"
+
+[table.c0__close_position.columns]
+averagePrice = "The `averagePrice` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collateral = "The `collateral` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+entryFundingRate = "The `entryFundingRate` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+key = "The `key` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+realisedPnl = "The `realisedPnl` int256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+reserveAmount = "The `reserveAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+size = "The `size` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__close_position.footguns]
+reserved_words = ["key"]
+big_ints = [
+    "size",
+    "collateral",
+    "averagePrice",
+    "entryFundingRate",
+    "reserveAmount",
+    "realisedPnl",
+]
+overflows_dec = [
+    "size",
+    "collateral",
+    "averagePrice",
+    "entryFundingRate",
+    "reserveAmount",
+    "realisedPnl",
+]
+
+[table.c0__collect_margin_fees]
+description = "`CollectMarginFees(address,uint256,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectMarginFees(address,uint256,uint256) event"
+
+[table.c0__collect_margin_fees.columns]
+feeTokens = "The `feeTokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+feeUsd = "The `feeUsd` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__collect_margin_fees.footguns]
+big_ints = [
+    "feeUsd",
+    "feeTokens",
+]
+overflows_dec = [
+    "feeUsd",
+    "feeTokens",
+]
+
+[table.c0__collect_swap_fees]
+description = "`CollectSwapFees(address,uint256,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per CollectSwapFees(address,uint256,uint256) event"
+
+[table.c0__collect_swap_fees.columns]
+feeTokens = "The `feeTokens` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+feeUsd = "The `feeUsd` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__collect_swap_fees.footguns]
+big_ints = [
+    "feeUsd",
+    "feeTokens",
+]
+overflows_dec = [
+    "feeUsd",
+    "feeTokens",
+]
+
+[table.c0__decrease_guaranteed_usd]
+description = "`DecreaseGuaranteedUsd(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DecreaseGuaranteedUsd(address,uint256) event"
+
+[table.c0__decrease_guaranteed_usd.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__decrease_guaranteed_usd.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.c0__decrease_pool_amount]
+description = "`DecreasePoolAmount(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DecreasePoolAmount(address,uint256) event"
+
+[table.c0__decrease_pool_amount.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__decrease_pool_amount.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.c0__decrease_position]
+description = "`DecreasePosition(bytes32,address,address,address,uint256,uint256,bool,uint256,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DecreasePosition(bytes32,address,address,address,uint256,uint256,bool,uint256,uint256) event"
+
+[table.c0__decrease_position.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collateralDelta = "The `collateralDelta` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collateralToken = "The `collateralToken` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+fee = "The `fee` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+indexToken = "The `indexToken` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+isLong = "The `isLong` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `isLong = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `isLong = 'true'` or `CAST(isLong AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+key = "The `key` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+price = "The `price` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sizeDelta = "The `sizeDelta` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__decrease_position.footguns]
+reserved_words = ["key"]
+big_ints = [
+    "collateralDelta",
+    "sizeDelta",
+    "price",
+    "fee",
+]
+overflows_dec = [
+    "collateralDelta",
+    "sizeDelta",
+    "price",
+    "fee",
+]
+bools = ["isLong"]
+
+[table.c0__decrease_reserved_amount]
+description = "`DecreaseReservedAmount(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DecreaseReservedAmount(address,uint256) event"
+
+[table.c0__decrease_reserved_amount.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__decrease_reserved_amount.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.c0__decrease_usdg_amount]
+description = "`DecreaseUsdgAmount(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DecreaseUsdgAmount(address,uint256) event"
+
+[table.c0__decrease_usdg_amount.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__decrease_usdg_amount.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.c0__direct_pool_deposit]
+description = "`DirectPoolDeposit(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per DirectPoolDeposit(address,uint256) event"
+
+[table.c0__direct_pool_deposit.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__direct_pool_deposit.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.c0__increase_guaranteed_usd]
+description = "`IncreaseGuaranteedUsd(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per IncreaseGuaranteedUsd(address,uint256) event"
+
+[table.c0__increase_guaranteed_usd.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__increase_guaranteed_usd.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.c0__increase_pool_amount]
+description = "`IncreasePoolAmount(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per IncreasePoolAmount(address,uint256) event"
+
+[table.c0__increase_pool_amount.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__increase_pool_amount.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.c0__increase_position]
+description = "`IncreasePosition(bytes32,address,address,address,uint256,uint256,bool,uint256,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per IncreasePosition(bytes32,address,address,address,uint256,uint256,bool,uint256,uint256) event"
+
+[table.c0__increase_position.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collateralDelta = "The `collateralDelta` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collateralToken = "The `collateralToken` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+fee = "The `fee` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+indexToken = "The `indexToken` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+isLong = "The `isLong` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `isLong = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `isLong = 'true'` or `CAST(isLong AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+key = "The `key` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+price = "The `price` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sizeDelta = "The `sizeDelta` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__increase_position.footguns]
+reserved_words = ["key"]
+big_ints = [
+    "collateralDelta",
+    "sizeDelta",
+    "price",
+    "fee",
+]
+overflows_dec = [
+    "collateralDelta",
+    "sizeDelta",
+    "price",
+    "fee",
+]
+bools = ["isLong"]
+
+[table.c0__increase_reserved_amount]
+description = "`IncreaseReservedAmount(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per IncreaseReservedAmount(address,uint256) event"
+
+[table.c0__increase_reserved_amount.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__increase_reserved_amount.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.c0__increase_usdg_amount]
+description = "`IncreaseUsdgAmount(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per IncreaseUsdgAmount(address,uint256) event"
+
+[table.c0__increase_usdg_amount.columns]
+amount = "The `amount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__increase_usdg_amount.footguns]
+big_ints = ["amount"]
+overflows_dec = ["amount"]
+
+[table.c0__liquidate_position]
+description = "`LiquidatePosition(bytes32,address,address,address,bool,uint256,uint256,uint256,int256,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per LiquidatePosition(bytes32,address,address,address,bool,uint256,uint256,uint256,int256,uint256) event"
+
+[table.c0__liquidate_position.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collateral = "The `collateral` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collateralToken = "The `collateralToken` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+indexToken = "The `indexToken` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+isLong = "The `isLong` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `isLong = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `isLong = 'true'` or `CAST(isLong AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+key = "The `key` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+markPrice = "The `markPrice` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+realisedPnl = "The `realisedPnl` int256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+reserveAmount = "The `reserveAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+size = "The `size` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__liquidate_position.footguns]
+reserved_words = ["key"]
+big_ints = [
+    "size",
+    "collateral",
+    "reserveAmount",
+    "realisedPnl",
+    "markPrice",
+]
+overflows_dec = [
+    "size",
+    "collateral",
+    "reserveAmount",
+    "realisedPnl",
+    "markPrice",
+]
+bools = ["isLong"]
+
+[table.c0__sell_u_s_d_g]
+description = "`SellUSDG(address,address,uint256,uint256,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per SellUSDG(address,address,uint256,uint256,uint256) event"
+
+[table.c0__sell_u_s_d_g.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+feeBasisPoints = "The `feeBasisPoints` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenAmount = "The `tokenAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+usdgAmount = "The `usdgAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__sell_u_s_d_g.footguns]
+big_ints = [
+    "usdgAmount",
+    "tokenAmount",
+    "feeBasisPoints",
+]
+overflows_dec = [
+    "usdgAmount",
+    "tokenAmount",
+    "feeBasisPoints",
+]
+
+[table.c0__swap]
+description = "`Swap(address,address,address,uint256,uint256,uint256,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per Swap(address,address,address,uint256,uint256,uint256,uint256) event"
+
+[table.c0__swap.columns]
+account = "The `account` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+amountIn = "The `amountIn` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+amountOut = "The `amountOut` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+amountOutAfterFees = "The `amountOutAfterFees` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+feeBasisPoints = "The `feeBasisPoints` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenIn = "The `tokenIn` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+tokenOut = "The `tokenOut` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__swap.footguns]
+big_ints = [
+    "amountIn",
+    "amountOut",
+    "amountOutAfterFees",
+    "feeBasisPoints",
+]
+overflows_dec = [
+    "amountIn",
+    "amountOut",
+    "amountOutAfterFees",
+    "feeBasisPoints",
+]
+
+[table.c0__update_funding_rate]
+description = "`UpdateFundingRate(address,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per UpdateFundingRate(address,uint256) event"
+
+[table.c0__update_funding_rate.columns]
+fundingRate = "The `fundingRate` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+token = "The `token` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__update_funding_rate.footguns]
+big_ints = ["fundingRate"]
+overflows_dec = ["fundingRate"]
+
+[table.c0__update_pnl]
+description = "`UpdatePnl(bytes32,bool,uint256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per UpdatePnl(bytes32,bool,uint256) event"
+
+[table.c0__update_pnl.columns]
+delta = "The `delta` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+hasProfit = "The `hasProfit` bool parameter - stored as exact text `'true'`/`'false'`, not a SQL boolean. `hasProfit = true` and `AND`/`NOT` implicitly cast and work; `COALESCE`, `CASE`, `bool_and`/`bool_or` and `UNION` do not. Write `hasProfit = 'true'` or `CAST(hasProfit AS BOOLEAN)`. (seeded from the ABI - edit semantic.toml to improve this)"
+key = "The `key` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__update_pnl.footguns]
+reserved_words = ["key"]
+big_ints = ["delta"]
+overflows_dec = ["delta"]
+bools = ["hasProfit"]
+
+[table.c0__update_position]
+description = "`UpdatePosition(bytes32,uint256,uint256,uint256,uint256,uint256,int256)` events emitted by the `c0` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per UpdatePosition(bytes32,uint256,uint256,uint256,uint256,uint256,int256) event"
+
+[table.c0__update_position.columns]
+averagePrice = "The `averagePrice` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collateral = "The `collateral` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+entryFundingRate = "The `entryFundingRate` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+key = "The `key` bytes32 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+realisedPnl = "The `realisedPnl` int256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+reserveAmount = "The `reserveAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+size = "The `size` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.c0__update_position.footguns]
+reserved_words = ["key"]
+big_ints = [
+    "size",
+    "collateral",
+    "averagePrice",
+    "entryFundingRate",
+    "reserveAmount",
+    "realisedPnl",
+]
+overflows_dec = [
+    "size",
+    "collateral",
+    "averagePrice",
+    "entryFundingRate",
+    "reserveAmount",
+    "realisedPnl",
+]
+
+[view]
+
+# Authored views (views/*.sql) are described here so the MCP/`/schema` can render them:
+# [view.your_view_name]
+# description = "What this derivation computes."

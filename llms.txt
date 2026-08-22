@@ -1,0 +1,42 @@
+# nuthatch nest on arbitrum-one
+
+A self-hosted blockchain index. Query it locally; there is no third-party API.
+
+## Contracts
+- `c0` = 0x489ee077994b6658eafa855c308275ead8097c4a
+
+## Tables (one per contract event)
+- `c0__buy_u_s_d_g` - BuyUSDG(address,address,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, account, token, tokenAmount, usdgAmount, feeBasisPoints)
+- `c0__close_position` - ClosePosition(bytes32,uint256,uint256,uint256,uint256,uint256,int256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, key, size, collateral, averagePrice, entryFundingRate, reserveAmount, realisedPnl)
+- `c0__collect_margin_fees` - CollectMarginFees(address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, feeUsd, feeTokens)
+- `c0__collect_swap_fees` - CollectSwapFees(address,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, feeUsd, feeTokens)
+- `c0__decrease_guaranteed_usd` - DecreaseGuaranteedUsd(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, amount)
+- `c0__decrease_pool_amount` - DecreasePoolAmount(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, amount)
+- `c0__decrease_position` - DecreasePosition(bytes32,address,address,address,uint256,uint256,bool,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, key, account, collateralToken, indexToken, collateralDelta, sizeDelta, isLong, price, fee)
+- `c0__decrease_reserved_amount` - DecreaseReservedAmount(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, amount)
+- `c0__decrease_usdg_amount` - DecreaseUsdgAmount(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, amount)
+- `c0__direct_pool_deposit` - DirectPoolDeposit(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, amount)
+- `c0__increase_guaranteed_usd` - IncreaseGuaranteedUsd(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, amount)
+- `c0__increase_pool_amount` - IncreasePoolAmount(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, amount)
+- `c0__increase_position` - IncreasePosition(bytes32,address,address,address,uint256,uint256,bool,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, key, account, collateralToken, indexToken, collateralDelta, sizeDelta, isLong, price, fee)
+- `c0__increase_reserved_amount` - IncreaseReservedAmount(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, amount)
+- `c0__increase_usdg_amount` - IncreaseUsdgAmount(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, amount)
+- `c0__liquidate_position` - LiquidatePosition(bytes32,address,address,address,bool,uint256,uint256,uint256,int256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, key, account, collateralToken, indexToken, isLong, size, collateral, reserveAmount, realisedPnl, markPrice)
+- `c0__sell_u_s_d_g` - SellUSDG(address,address,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, account, token, usdgAmount, tokenAmount, feeBasisPoints)
+- `c0__swap` - Swap(address,address,address,uint256,uint256,uint256,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, account, tokenIn, tokenOut, amountIn, amountOut, amountOutAfterFees, feeBasisPoints)
+- `c0__update_funding_rate` - UpdateFundingRate(address,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, token, fundingRate)
+- `c0__update_pnl` - UpdatePnl(bytes32,bool,uint256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, key, hasProfit, delta)
+- `c0__update_position` - UpdatePosition(bytes32,uint256,uint256,uint256,uint256,uint256,int256) (block_number, block_hash, block_timestamp, tx_hash, log_index, address, _seq, key, size, collateral, averagePrice, entryFundingRate, reserveAmount, realisedPnl)
+
+## Live HTTP API (run `nuthatch dev`)
+- `GET /`                    index status
+- `GET /tables`              every table with its columns
+- `GET /table/{name}?limit=N` recent rows of one table (hot + sealed)
+- `GET /entity/{id}`         one row by id (`{block:012}-{logindex:06}`)
+- `GET /sql?q=SELECT...`     read-only SQL; each table is a view named `{alias}__{event}`
+- `GET /balances?limit=N`    top holder balances (when an ERC-20 Transfer table is present)
+- `GET /balance/{address}`   one address's derived balance
+
+## MCP (for coding agents)
+Run `nuthatch mcp` (stdio) to expose tools: status, schema, tables, table, sql, entity,
+balance, top_balances. Fully offline against the local instance; nothing phones home.
