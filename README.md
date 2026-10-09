@@ -1,6 +1,6 @@
 # gmx
 
-A [nuthatch](https://github.com/nightswatchhq/nuthatch) nest: **GMX V1 Vault on Arbitrum**.
+A [nuthatch](https://github.com/nuthatch-org/nuthatch) nest: **GMX V1 Vault on Arbitrum**.
 
 The V1 perpetuals vault.
 
@@ -25,7 +25,7 @@ Indexed blocks **496,949,922 to 497,246,509** and sealed **10 events**. Every ta
 ## Run it
 
 ```sh
-nuthatch init --from https://github.com/nightswatchhq/gmx
+nuthatch init --from https://github.com/nuthatch-org/gmx
 cd gmx
 nuthatch dev --dir . --backfill 50000 --seal-direct
 nuthatch sql --dir . "SELECT count(*) FROM \"c0__buy_u_s_d_g\""
